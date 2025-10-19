@@ -1,7 +1,6 @@
 "use client"
-
+import {StateContext} from "@/context/StateContext";
 import React,{useState} from 'react';
-import {AuthStateContext} from "@/context/AuthStateContext";
 import {Admin} from "@/context/Types";
 
 const Provider = ({children}:{children:React.ReactNode}) => {
@@ -12,9 +11,9 @@ const Provider = ({children}:{children:React.ReactNode}) => {
     });
 
     return (
-        <AuthStateContext.Provider value={{userData, setUserData}}>
+        <StateContext.Provider value={{userData, setUserData}}>
             {children}
-        </AuthStateContext.Provider>
+        </StateContext.Provider>
     );
 };
 

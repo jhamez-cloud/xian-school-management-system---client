@@ -16,6 +16,7 @@ const FormInput = (props:Props) => {
             className={`w-full p-2 px-4 border-2 border-gray-300 rounded-md focus:outline-blue-500`}
             required={true}
             onChange={props.handler}
+            autoComplete={`on`}
         />
     );
 };

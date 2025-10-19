@@ -1,4 +1,4 @@
 import {createContext} from 'react';
 import {ContextType} from "@/context/ContextType";
 
-export const AuthStateContext = createContext<ContextType | null>(null);
+export const StateContext = createContext<ContextType | null>(null);

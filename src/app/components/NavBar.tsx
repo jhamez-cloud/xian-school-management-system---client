@@ -30,7 +30,7 @@ const NavBar = (props:Props) => {
                 </li>
                 <li className={`w-full flex items-center space-x-2`}>
                     <img src="/logo/user.png" alt=""/>
-                    <NavLink href={`/Users`} children={`Users`}/>
+                    <NavLink href={`/Users`} children={`Students`}/>
                 </li>
                 <li className={`w-full flex items-center space-x-2`}>
                     <img src="/logo/notification.png" alt=""/>
@@ -45,6 +45,10 @@ const NavBar = (props:Props) => {
                     <NavLink href={`/Schedules`} children={`Schedules`}/>
                 </li>
             </ul>
+            <div className={`w-full mt-8 pl-2 text-gray-400`}>
+                <p>Xian School Manager</p>
+                <p>copyright &copy;2025</p>
+            </div>
         </nav>
     );
 };
