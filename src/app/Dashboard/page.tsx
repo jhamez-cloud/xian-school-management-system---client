@@ -4,18 +4,18 @@ import React, {useState, useEffect, useContext} from "react";
 import NavBar from "@/app/components/NavBar";
 import Banner from "@/app/components/Banner";
 import Card from "@/app/components/Card";
-import {AuthStateContext} from "@/context/AuthStateContext";
-import {useAuth} from "@/hooks/useAuth";
+import {StateContext} from "@/context/StateContext";
+import {router} from "next/client";
 
 const Page = () => {
 
-    /*const context = useContext(AuthStateContext);
+    const context = useContext(StateContext);
     if(!context) {
         throw new Error("No context provided");
     }
 
-    const {userData,setUserData} = context;*/
-    const {userData,setUserData} = useAuth(true);
+    const {userData,setUserData} = context;
+    //const {userData,setUserData} = useAuth(true);
 
    // const [userData, setUserData] = useState<Admin | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
@@ -27,7 +27,7 @@ const Page = () => {
                 setLoading(true);
                 const res = await fetch("http://localhost:8080/api/auth/user", {
                     method: "GET",
-                    credentials: "include", // 🔑 send cookie
+                    credentials: "include", // send cookie
                     headers: { "Content-Type": "application/json" },
                 });
 
@@ -36,7 +36,7 @@ const Page = () => {
                 }
 
                 const data = await res.json();
-                setUserData(data); // ✅ actually save user
+                setUserData(data); // actually save user
                 console.log("Fetched user:", data);
             } catch (err: any) {
                 setError(err.message);
@@ -53,7 +53,7 @@ const Page = () => {
 
     return (
         <div className="w-full h-full border-t-16 border-t-blue-400 flex space-x-8">
-            <NavBar email={userData?.email} username={userData?.username}/>
+            <NavBar email={userData.user?.email} username={userData.user?.userName}/>
             <section className={`w-5/6 h-full py-4 pt-0 space-y-2 bg-white overflow-y-scroll relative`}>
                 <div className={`w-full h-[50px] bg-white flex px-2 items-center space-x-[60%] fixed mb-4 z-20`}>
                     <h1 className={`text-gray-700 text-lg font-light`}>Xian School Manager</h1>
@@ -65,12 +65,12 @@ const Page = () => {
                         [
                             {
                                 color:"bg-blue-950",
-                                number:"4",
-                                name:"ACHINS"
+                                number:userData.studentCount?.toString(),
+                                name:"STUDENTS",
                             },
                             {
                                 color:"bg-blue-500",
-                                number:"105",
+                                number:userData.lecturerCount?.toString(),
                                 name:"TEACHERS"
                             },
                             {

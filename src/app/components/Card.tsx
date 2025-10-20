@@ -4,6 +4,7 @@ interface Props {
     number: string;
     itemName: string;
     backColor: any;
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 const Card = (props:Props) => {

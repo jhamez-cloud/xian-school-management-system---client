@@ -83,7 +83,7 @@ const LoginForm = () => {
                     {success}
                 </div>
             )}
-            <form action="" className={`w-full space-y-2`} onSubmit={handleLogin}>
+            <form action="" className={`w-full space-y-2`} onSubmit={handleLogin} autoComplete={`on`}>
                 <FormInput type={`email`} name={`email`} placeholder={`Email Address`} handler={(e)=>setEmail(e.target.value)}/>
                 <FormInput type={`password`} name={`password`} placeholder={`Password`} handler={(e)=>setPassword(e.target.value)}/>
                 <button

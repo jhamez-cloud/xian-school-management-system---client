@@ -1,4 +1,8 @@
 export type Admin = {
-    username: string;
-    email: string;
+    user: {
+        userName: string;
+        email: string;
+    };
+    studentCount: number;
+    lecturerCount: number;
 }
