@@ -1,7 +1,4 @@
 import React from 'react';
-import navLink from "@/app/components/ui/NavLink";
-import Link from "next/link";
-import * as url from "node:url";
 import NavLink from "@/app/components/ui/NavLink";
 
 interface Props {

@@ -5,7 +5,6 @@ import NavBar from "@/app/components/NavBar";
 import Banner from "@/app/components/Banner";
 import Card from "@/app/components/Card";
 import {StateContext} from "@/context/StateContext";
-import {router} from "next/client";
 
 const Page = () => {
 

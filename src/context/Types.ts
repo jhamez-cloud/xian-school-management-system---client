@@ -6,3 +6,11 @@ export type Admin = {
     studentCount: number;
     lecturerCount: number;
 }
+
+export type studentsType = ({
+    _id:any,
+    name: string,
+    level: number,
+    GPA: number,
+    image: string,
+})[]
