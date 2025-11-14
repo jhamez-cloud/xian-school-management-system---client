@@ -6,6 +6,14 @@ import {StateContext} from "@/context/StateContext";
 import Header from "@/app/components/Header";
 import StudentCard from "@/app/components/StudentCard";
 import {studentsType} from "@/context/Types";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/app/components/ui/dropdown-menu"
 
 const Page = () => {
     const context = useContext(StateContext);
@@ -54,27 +62,29 @@ const Page = () => {
     },[page])
 
     return (
-        <div className="w-full h-full border-t-16 border-t-blue-400 flex space-x-8">
+        <div className="w-full h-full border-t-16 border-t-blue-400 flex space-x-4">
             <NavBar email={email} username={username}/>
-            <section  className={`w-5/6 h-full py-4 pt-0 space-y-2 bg-white overflow-y-scroll relative`}>
+            <section  className={`w-5/6 h-full pb-4 pt-0 bg-white overflow-y-scroll`}>
                 <Header/>
-                <div className={`w-full flex items-center justify-between px-2 pr-1.5 mt-12`}>
+                <div className={`w-full flex items-center justify-between px-2 sticky mb-2 z-30 bg-white`}>
                     <div className={`flex space-x-6`}>
                         <h1 className={`text-xl font-bold py-2`}>REGISTERED STUDENTS</h1>
-                        <select name="" id="" className={`focus:outline-none`}>
-                            <option value="">Filter By</option>
-                            <option value="">Level</option>
-                            <option value="">Increasing GPA</option>
-                            <option value="">Decreasing GPA</option>
-                            <option value="">Name A-Z</option>
-                            <option value="">Name Z-A</option>
-                            <option value="">Full Payment</option>
-                            <option value="">Part Payment</option>
-                        </select>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger className={`rounded-sm bg-white shadow-md px-2 font-medium focus:outline-none cursor-pointer`} style={{boxShadow:"0 0 10px rgba(0,0,0,0.5)"}}>Filter Options</DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuLabel>Filter By</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>Name A-Z</DropdownMenuItem>
+                                <DropdownMenuItem>Name Z-A</DropdownMenuItem>
+                                <DropdownMenuItem>GPA 0-4</DropdownMenuItem>
+                                <DropdownMenuItem>GPA 4-0</DropdownMenuItem>
+                                <DropdownMenuItem>Level</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                     </div>
-                    <button className={`w-[150px] cursor-pointer bg-green-500 text-white rounded-sm text-lg font-medium text-shadow-lg px-2 py-1`}>Add Student</button>
+                    <button className={`w-[150px] h-full cursor-pointer bg-green-500 text-white rounded-sm text-lg font-medium text-shadow-lg px-2 py-1`}>Add Student</button>
                 </div>
-                <div className={`w-full min-h-[545px] grid grid-cols-[repeat(6,15%)] gap-x-6 gap-y-4 `}>
+                <div className={`w-full min-h-[545px] grid grid-cols-[repeat(6,15%)] gap-x-6 gap-y-4`}>
                     {
                         studentsData.slice(startingIndex,endingIndex).map((student,index)=>(
                             <StudentCard key={index} name={student.name} index={student._id.trim()} gpa={student.GPA} image={student.image} level={student.level}/>
